@@ -1,14 +1,8 @@
-﻿string GetArr(string message)
+﻿void PrintArray(string[] array)
 {
-    Console.Write($"{message}");
-    string num = Console.ReadLine();
-    return num;
-}
-int GetNum(string message)
-{
-    Console.Write($"{message}");
-    int num = Convert.ToInt32(Console.ReadLine());
-    return num;
+    for (int i = 0; i < array.Length; i += 1)
+        Console.Write(array[i] + " ");
+    Console.WriteLine();
 }
 string[] CreateArray()
 {
@@ -22,10 +16,31 @@ string[] CreateArray()
     }
     return array;
 }
+string[] ResultArray(string[] array)
+{
+    int c = 0;
+    int j = 0;
+    for (int i = 0; i < array.Length; i += 1)
+    {
+        if (array[i].Length <= 3) c += 1;
+    }
+    string[] arrayRes = new string[c];
+    for (int i = 0; i < array.Length; i += 1)
+    {
+        if (array[i].Length <= 3)
+        {
+            arrayRes[j] = array[i];
+            j += 1;
+        }
+    }
+    return arrayRes;
+}
 
-
-
-
-
-int Arrlenght = GetNum("Введите размер масива: ");
-string[] arr = new string[Arrlenght];
+string[] arrayFaсt = CreateArray();
+Console.WriteLine();
+Console.WriteLine("Созданный массив:");
+PrintArray(arrayFaсt);
+Console.WriteLine();
+string[] arrayRes = ResultArray(arrayFaсt);
+Console.WriteLine("Новый массив из строк, длина которых меньше, либо равна 3 символам:");
+PrintArray(arrayRes);
